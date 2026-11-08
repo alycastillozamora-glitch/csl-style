@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="es-ES">
+  <info>
+    <title>Primer autor et al. (año): DOI — compacto para memorias AEI</title>
+    <id>http://www.zotero.org/styles/primer-autor-doi-compacto</id>
+    <link href="http://www.zotero.org/styles/primer-autor-doi-compacto" rel="self"/>
+    <author><name>VERMITRACE</name></author>
+    <category citation-format="author-date"/>
+    <summary>Cita en texto (Autor et al., año); bibliografía: Autor et al. (año): DOI.</summary>
+    <updated>2026-11-04T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</rights>
+  </info>
+  <locale xml:lang="es">
+    <terms>
+      <term name="et-al">et al.</term>
+      <term name="no date">s.f.</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" et-al-min="2" et-al-use-first="1" and="text" delimiter=", " initialize-with=". "/>
+      <et-al font-style="normal"/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title" form="short"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="year">
+    <date variable="issued"><date-part name="year"/></date>
+  </macro>
+  <macro name="doi">
+    <choose>
+      <if variable="DOI"><text variable="DOI"/></if>
+      <else-if variable="URL"><text variable="URL"/></else-if>
+      <else><text variable="title" form="short"/></else>
+    </choose>
+  </macro>
+  <citation et-al-min="2" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year">
+    <sort><key macro="author-short"/><key macro="year"/></sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="2" et-al-use-first="1" hanging-indent="false" line-spacing="1" entry-spacing="1">
+    <sort><key macro="author-short"/><key macro="year"/></sort>
+    <layout suffix=".">
+      <group font-weight="bold" display="block">
+        <text macro="author-short"/>
+        <text macro="year" prefix=" (" suffix="):"/>
+      </group>
+      <text macro="doi" text-case="lowercase" display="block"/>
+    </layout>
+  </bibliography>
+</style>
